@@ -212,7 +212,7 @@ def _benchmark_op(op: Callable[[], None], num_trials: int) -> List[float]:
 def benchmark_jnp_dot(matrix_dims: Tuple[int, int, int],
                       num_trials: int,
                       dtype: jnp.dtype = jnp.float32,
-                      average: int = 20,
+                      average: int = 10,
                       seed: int = 42) -> np.ndarray:
   """Benchmarks `jnp.dot`."""
   baseline_op = _get_baseline_op(matrix_dims, dtype, average, seed)
@@ -224,7 +224,7 @@ def benchmark_factorized_algorithm(factors: np.ndarray,
                                    matrix_dims: Tuple[int, int, int],
                                    num_trials: int,
                                    dtype: jnp.dtype = jnp.float32,
-                                   average: int = 20,
+                                   average: int = 10,
                                    seed: int = 42) -> np.ndarray:
   """Benchmarks the fast matrix multiplication algorithm given by `factors`."""
   factorization_algorithm_op = _get_factorization_op(

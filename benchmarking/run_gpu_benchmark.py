@@ -80,6 +80,7 @@ def main():
     for algorithm_name, factorization in factorized_algorithms:
       if algorithm_name == 'AlphaTensor TPU-optimized' and s > 19000:
         continue  # This TPU-optimized algorithm runs OOM on a V100 GPU.
+      print(algorithm_name)
       results_algorithm = utils.benchmark_factorized_algorithm(
           factorization, (s, s, s), num_trials=num_trials)
       ratio = np.median(results_dot / results_algorithm)
